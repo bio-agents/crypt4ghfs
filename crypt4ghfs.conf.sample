@@ -1,0 +1,41 @@
+[DEFAULT]
+# Python logging level: https://docs.python.org/3/library/logging.html#levels
+# Comment it out to remove the logging capability
+log_level = CRITICAL
+
+# When True, we also configure the crypt4gh logger
+# with the above level. Default: False
+include_crypt4gh_log = yes
+
+# Specify the root directory to mirror
+# Required
+rootdir=~/crypt4gh-files
+
+# Specify the extension to hide
+# Files endings corresponding to that extension will be stripped (once)
+# Directories are left untouched
+extension = .c4gh
+
+[FUSE]
+# options to be passed to the fuse engine
+# Use 'ro' to make the file system as read-only
+# and prevent Crypt4GH encryptions
+options=ro,default_permissions
+# the default options are 'ro,default_permissions'
+
+
+[CRYPT4GH]
+# The encryption key
+seckey = ~/.ssh/mykey
+
+# If you set `header_size_hint` to a non-negative integer, we'll
+# assume that all headers are of that size, and avoid a size lookup.
+# If it is set to 0 or missing, we'll use the `assume_same_size_headers`
+# to check if we perform only the first size lookup
+# and reuse the size for the other headers.
+#
+#header_size_hint = 124
+#
+# Defaults:
+#        header_size_hint: None
+#        assume_same_size_headers: True
